@@ -1,8 +1,8 @@
 {
-  "name": "nest-typescript-starter",
+  "name": "telega-bot-nest",
   "private": true,
   "version": "1.0.0",
-  "description": "Nest TypeScript starter repository",
+  "description": "Nest TypeScript server for telega bot",
   "license": "MIT",
   "scripts": {
     "build": "nest build",
