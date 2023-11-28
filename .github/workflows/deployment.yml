@@ -12,6 +12,7 @@ jobs:
         run: npm run test
   lint:
     runs-on: ubuntu-22.04
+    needs: test
     steps:
       - name: Get repo code
         uses: actions/checkout@v4
@@ -21,6 +22,7 @@ jobs:
         run: npm run lint
   build:
     runs-on: ubuntu-22.04
+    needs: lint
     steps:
       - name: Get repo code
         uses: actions/checkout@v4
