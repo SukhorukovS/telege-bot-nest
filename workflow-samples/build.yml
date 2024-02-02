@@ -1,0 +1,25 @@
+name: Build & Deploy
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install Deps
+        run: npm ci
+      - name: Build Project
+        run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist
+          name: build
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Get build
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
