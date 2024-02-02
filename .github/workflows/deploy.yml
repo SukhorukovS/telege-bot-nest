@@ -37,7 +37,7 @@ jobs:
     needs: [lint, test]
     strategy:
       matrix:
-        node-version: [14, 16]
+        node-version: [18, 20]
     steps:
       - name: Get repo code
         uses: actions/checkout@v4
@@ -55,7 +55,7 @@ jobs:
       - name: Build App
         run: npm run build
       - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.2.12
+        uses: easingthemes/ssh-deploy@vmain
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
