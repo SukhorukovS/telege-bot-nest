@@ -11,7 +11,7 @@ export class BotService implements OnModuleInit {
 
   async onModuleInit() {
     this.bot.setWebHook(
-      `https://8wirq0-95-26-104-138.ru.tuna.am/bot${process.env.BOT_API_TOKEN}`,
+      `https://147.45.183.147/bot${process.env.BOT_API_TOKEN}`,
     );
     await this.setCommands();
     await this.botMessage();
