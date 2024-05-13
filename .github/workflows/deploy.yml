@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [16]
     steps:
       - name: Get repo code
         uses: actions/checkout@v4
