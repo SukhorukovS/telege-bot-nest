@@ -6,13 +6,10 @@ import { PrismaService } from 'src/prisma.servise';
 export class BotService implements OnModuleInit {
   bot = null;
   constructor(private readonly prisma: PrismaService) {
-    this.bot = new TelegramBot(process.env.BOT_API_TOKEN);
+    this.bot = new TelegramBot(process.env.BOT_API_TOKEN, { polling: true });
   }
 
   async onModuleInit() {
-    this.bot.setWebHook(
-      `https://147.45.183.147/bot${process.env.BOT_API_TOKEN}`,
-    );
     await this.setCommands();
     await this.botMessage();
   }
