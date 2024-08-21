@@ -1,15 +1,15 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import TelegramBot = require('node-telegram-bot-api');
 import { PrismaService } from 'src/prisma.servise';
 
 @Injectable()
 export class BotService implements OnModuleInit {
   bot = null;
-  constructor(private readonly prisma: PrismaService) {
-    this.bot = new TelegramBot(
-      '6614402380:AAHh-Nqh-cIXNI4rwdfnJftu2OIKWWp5tf4',
-      { polling: true },
-    );
+  constructor(private readonly configService: ConfigService) {
+    this.bot = new TelegramBot(this.configService.get('BOT_API_TOKEN'), {
+      polling: true,
+    });
   }
 
   async onModuleInit() {
