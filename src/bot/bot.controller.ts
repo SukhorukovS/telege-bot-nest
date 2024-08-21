@@ -2,8 +2,13 @@ import { Controller, Post, Req, Res, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 import { BotService } from './bot.service';
+import { ConfigService } from '@nestjs/config';
 
-@Controller(`bot6614402380:AAHh-Nqh-cIXNI4rwdfnJftu2OIKWWp5tf4`)
+const configService = new ConfigService();
+
+const BOT_API_TOKEN = configService.get('BOT_API_TOKEN');
+
+@Controller(`bot${BOT_API_TOKEN}`)
 export class BotController {
   constructor(private botService: BotService) {}
 
